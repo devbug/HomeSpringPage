@@ -1,9 +1,11 @@
 export FW_DEVICE_IP=192.168.1.2
+export FW_DEVICE_IP2=192.168.1.4
 
 include theos/makefiles/common.mk
 
 TWEAK_NAME = HomeSpringPage
 HomeSpringPage_FILES = Tweak.xm
+HomeSpringPage_FRAMEWORKS = UIKit Foundation CoreFoundation
 HomeSpringPage_LDFLAGS = -Xlinker -unexported_symbol -Xlinker "*"
 
 include $(THEOS_MAKE_PATH)/tweak.mk
