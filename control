@@ -1,0 +1,9 @@
+Package: me.devbug.homespringpage
+Name: HomeSpringPage
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: Add empty page at first page on SpringBoard
+Maintainer: deVbug <devbug@devbug.me>
+Author: deVbug <devbug@devbug.me>
+Section: Tweaks
