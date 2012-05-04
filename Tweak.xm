@@ -12,6 +12,7 @@
 
 @interface SBIconListModel : NSObject
 - (id)initWithFolder:(id)folder;
+- (BOOL)isEmpty;
 @end
 
 @interface SBIconController : NSObject {
@@ -33,9 +34,14 @@
 }
 
 - (void)resetRootIconLists {
-	SBIconListModel *model = [[%c(SBIconListModel) alloc] initWithFolder:self.rootFolder];
-	[self.rootFolder.lists insertObject:model atIndex:0];
-	[model release];
+	if (self.rootFolder.listCount > 0) {
+		SBIconListModel *temp = [self.rootFolder.lists objectAtIndex:0];
+		if (![temp isEmpty]) {
+			SBIconListModel *model = [[%c(SBIconListModel) alloc] initWithFolder:self.rootFolder];
+			[self.rootFolder.lists insertObject:model atIndex:0];
+			[model release];
+		}
+	}
 	
 	%orig;
 }
