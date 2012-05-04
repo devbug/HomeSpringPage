@@ -11,25 +11,12 @@
 @end
 
 @interface SBIconListModel : NSObject
-- (id)initWithFolder:(id)fp8;
-@end
-
-@interface SBIconListView : UIView
-- (void)setModel:(id)fp8;
-- (id)model;
-@end
-
-@interface SBSearchView : UIView
-@end
-
-@interface SBSearchController : NSObject
-- (SBSearchView *)searchView;
+- (id)initWithFolder:(id)folder;
 @end
 
 @interface SBIconController : NSObject {
 	SBRootFolder *_rootFolder;
 }
-- (SBSearchController *)searchController;
 @end
 
 @interface SBIconController (NEW)
@@ -48,8 +35,6 @@
 - (void)resetRootIconLists {
 	SBIconListModel *model = [[%c(SBIconListModel) alloc] initWithFolder:self.rootFolder];
 	[self.rootFolder.lists insertObject:model atIndex:0];
-	SBIconListView *listView = [[%c(SBIconListView) alloc] initWithFrame:self.searchController.searchView.frame];
-	[listView setModel:model];
 	[model release];
 	
 	%orig;
